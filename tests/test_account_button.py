@@ -1,31 +1,28 @@
 from locators import Locators
+from data import FixedUser
+from data import Urls
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-
-
-main_page_link = "https://stellarburgers.nomoreparties.site/"
-login_page_link = "https://stellarburgers.nomoreparties.site/login"
-account_page = "https://stellarburgers.nomoreparties.site/account/profile"
 
 
 class TestClickOnAccountButton:
     def test_unauthorized_user_move_to_login_page_by_click_on_account_button(self, driver):
         # открываем главную страницу
-        driver.get(main_page_link)
+        driver.get(Urls.LINK)
         # переходим на страницу авторизации
         driver.find_element(*Locators.SEARCH_PURPLE_BUTTON).click()
         # проверяем, что мы на странице авторизации
-        assert driver.current_url == login_page_link, \
-            f'текущий url не соответствует ожидаемому: {driver.current_url} != {login_page_link}'
+        assert driver.current_url == Urls.LOGIN_PAGE, \
+            f'текущий url не соответствует ожидаемому: {driver.current_url} != {Urls.LOGIN_PAGE}'
 
-    def test_authorized_user_move_to_account_page_by_click_on_account_button(self, driver, fixed_user):
+    def test_authorized_user_move_to_account_page_by_click_on_account_button(self, driver):
         # открываем главную страницу
-        driver.get(main_page_link)
+        driver.get(Urls.LINK)
         # переходим на страницу авторизации
         driver.find_element(*Locators.SEARCH_PURPLE_BUTTON).click()
         # авторизуемся
-        driver.find_element(*Locators.SEARCH_EMAIL_FIELD).send_keys(fixed_user.login)
-        driver.find_element(*Locators.SEARCH_PASSWORD_FIELD).send_keys(fixed_user.password)
+        driver.find_element(*Locators.SEARCH_EMAIL_FIELD).send_keys(FixedUser.USER_LOGIN_FIXED)
+        driver.find_element(*Locators.SEARCH_PASSWORD_FIELD).send_keys(FixedUser.USER_PASSWORD_FIXED)
         WebDriverWait(driver, 3).until(
             expected_conditions.element_to_be_clickable(Locators.SEARCH_PURPLE_BUTTON))
         driver.find_element(*Locators.SEARCH_PURPLE_BUTTON).click()
@@ -36,5 +33,5 @@ class TestClickOnAccountButton:
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(Locators.SEARCH_EMAIL_FIELD))
         # проверяем, что мы на странице пользователя
-        assert driver.current_url == account_page, \
-            f'текущий url не соответствует ожидаемому: {driver.current_url} != {account_page}'
+        assert driver.current_url == Urls.ACCOUNT_PAGE, \
+            f'текущий url не соответствует ожидаемому: {driver.current_url} != {Urls.ACCOUNT_PAGE}'

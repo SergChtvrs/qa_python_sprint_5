@@ -17,18 +17,19 @@ class Locators:
     SEARCH_HEADER_LOGO = By.XPATH, "//*[contains(@class, 'AppHeader_header__logo')]" # логотип в шапке
     SEARCH_EXIT_BUTTON = By.XPATH, "//*[text()='Выход']" # кнопка Выход в личном кабинете
     SEARCH_TEXT_ON_LOGIN_PAGE = By.XPATH, "//*[text()='Вход']"  # текст Вход
-    SEARCH_CONSTRUCTOR_TAB_BUN = (By.XPATH,
-                                  "//*[contains(@class,'BurgerIngredients_ingredients')]/descendant::span[text()='Булки']")  # Таб Булки конструктора
-    SEARCH_CONSTRUCTOR_TAB_SAUCE = (By.XPATH,
-                                    "//*[contains(@class,'BurgerIngredients_ingredients')]//descendant::span[text()='Соусы']")  # Таб Соусы конструктора
-    SEARCH_CONSTRUCTOR_TAB_FILLING = (By.XPATH,
-                                      "//*[contains(@class,'BurgerIngredients_ingredients')]/descendant::span[text()='Начинки']") # Таб Начинки конструктора
     SEARCH_CONSTRUCTOR_MENU_TEXT_BUN = (By.XPATH,
                                         "//*[contains(@class,'BurgerIngredients_ingredients')]/child::h2[text()='Булки']")  # Текст Булки в меню конструктора
     SEARCH_CONSTRUCTOR_MENU_TEXT_SAUCE = (By.XPATH,
                                           "//*[contains(@class,'BurgerIngredients_ingredients')]/child::h2[text()='Соусы']")  # Текст Соусы в меню конструктора
     SEARCH_CONSTRUCTOR_MENU_TEXT_FILLING = (By.XPATH,
                                             "//*[contains(@class,'BurgerIngredients_ingredients')]/child::h2[text()='Начинки']")  # Текст Начинки в меню конструктора
+    SEARCH_CONSTRUCTOR_BUN_TAB = (By.XPATH,
+                                  "//*[contains(@class,'BurgerIngredients_ingredients')]/descendant::span[text()='Булки']/parent::*")   # Таб Булки конструктора
+    SEARCH_CONSTRUCTOR_SAUCE_TAB = (By.XPATH,
+                                    "//*[contains(@class,'BurgerIngredients_ingredients')]/descendant::span[text()='Соусы']/parent::*")   # Таб Соусы конструктора
+    SEARCH_CONSTRUCTOR_FILLING_TAB = (By.XPATH,
+                                      "//*[contains(@class,'BurgerIngredients_ingredients')]/descendant::span[text()='Начинки']/parent::*")  # Таб Начинки конструктора
+
 
 
 
